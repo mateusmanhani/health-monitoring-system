@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.healthapp.heartrate";  // Your desired package
+option java_outer_classname = "HeartRateProto";
+
+service HeartRateService{
+  rpc GetCurrentHeartRate(HeartRateRequest) returns (HeartRateResponse);
+  rpc StreamHeartRate(HeartRateRequest) returns (stream HeartRateResponse);
+}
+
+message HeartRateRequest{
+  string patient_id = 1;
+}
+
+message HeartRateResponse{
+  int32 bpm = 1;
+  string timestamp = 2;
+}
