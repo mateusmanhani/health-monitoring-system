@@ -46,7 +46,6 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>2.3.232</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- grpc / proto related dependencies -->
@@ -71,12 +70,6 @@
             <artifactId>annotations-api</artifactId>
             <version>${tomcat.annotations.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- logback -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
         </dependency>
         <!-- junit -->
         <dependency>

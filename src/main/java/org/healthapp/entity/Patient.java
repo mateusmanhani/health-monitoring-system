@@ -1,16 +1,14 @@
 package org.healthapp.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "patient")
 public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int patientId;
 
     private String name;
 
@@ -30,12 +28,12 @@ public class Patient {
 
     //  Getters and Setters
 
-    public int getId() {
-        return id;
+    public int getPatientId() {
+        return patientId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
     }
 
     public String getName() {

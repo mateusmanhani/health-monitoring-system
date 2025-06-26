@@ -1,13 +1,11 @@
 package org.healthapp.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "heart_rate_log")
 public class HeartRateLog {
 
     @Id
@@ -18,11 +16,12 @@ public class HeartRateLog {
 
     private int bpm;
 
+
     private Timestamp timestamp;
 
     // Constructors
-    public HeartRateLog(int patientId, int bpm, Timestamp timestamp) {
-        this.patientId = patientId;
+    public HeartRateLog(int patient, int bpm, Timestamp timestamp) {
+        this.patientId = patient;
         this.bpm = bpm;
         this.timestamp = timestamp;
     }
@@ -39,12 +38,12 @@ public class HeartRateLog {
         this.logId = logId;
     }
 
-    public int getPatientId() {
+    public int getPatient() {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
+    public void setPatient(int patient) {
+        this.patientId = patient;
     }
 
     public int getBpm() {

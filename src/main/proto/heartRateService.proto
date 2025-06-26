@@ -3,6 +3,7 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "org.healthapp.heartrate";  // Your desired package
 option java_outer_classname = "HeartRateProto";
+import "google/protobuf/wrappers.proto";
 
 // A service to handle requests and return the response ( heart rate of requested patient id)
 // And also a method to stream the current heart rate continuously
@@ -14,7 +15,7 @@ service HeartRateService{
 
 // The request passed in order to get a response defined bellow
 message HeartRateRequest{
-  string patient_id = 1; // Unique patient identifier
+  google.protobuf.Int32Value patient_id = 1; // Unique patient identifier
 }
 
 // The response to return the bpm and the time stamp
