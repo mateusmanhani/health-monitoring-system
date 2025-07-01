@@ -15,4 +15,6 @@ public interface HeartRateRepository extends JpaRepository<HeartRateLog, Integer
 
     // Optionally find all logs for a patient
     List<HeartRateLog> findByPatientId(int patientId);
+
+    List<HeartRateLog> findByPatientIdOrderByTimestampAsc(int patientId);
 }

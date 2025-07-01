@@ -2,7 +2,7 @@ package org.healthapp;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import org.healthapp.service.HeartRateGrpcService;
+import org.healthapp.service.HeartRateGrpcController;
 import org.healthapp.service.HeartRateService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,7 +19,7 @@ public class HeartRateApp {
 
         Server server = ServerBuilder
                 .forPort(50051)
-                .addService(new HeartRateGrpcService(heartRateService))
+                .addService(new HeartRateGrpcController(heartRateService))
                 .build()
                 .start();
 

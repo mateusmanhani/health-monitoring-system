@@ -15,10 +15,12 @@
 <!-- Patient Selection -->
 <div class="mb-4">
     <form action="/heartrate" method="get">
-        <select name="patientId" class="form-select">
+        <select name="patientId" class="form-select" required>
+            <option value="">-- Select Patient --</option>
             <option th:each="patient : ${patients}"
                     th:value="${patient.patientId}"
-                    th:text="${patient.name + ' ' + patient.surname}">
+                    th:text="${patient.name + ' ' + patient.surname}"
+                    th:selected="${patient.patientId == param.patientId}">
             </option>
         </select>
         <button type="submit" class="btn btn-primary mt-2">Get Current Rate</button>
@@ -28,35 +30,53 @@
 <!-- Display Results -->
 <div id="result" class="p-3 rounded"
      th:if="${latestLog != null}"
-     th:classappend="${latestLog.bpm > 100} ? ' alert-high' : (${latestLog.bpm < 60} ? ' alert-low' : '')">
+     th:classappend="${latestLog.bpm > 100} ? ' alert-high' :
+                     (${latestLog.bpm < 60} ? ' alert-low' : '')">
     <h3>
         <span th:text="'BPM: ' + ${latestLog.bpm}"></span> |
         <span th:text="${latestLog.bpm > 100} ? 'HIGH' :
-                           (${latestLog.bpm < 60} ? 'LOW' : 'NORMAL')"></span>
+                       (${latestLog.bpm < 60} ? 'LOW' : 'NORMAL')"></span>
     </h3>
-    <p th:text="${latestLog.timestamp}"></p>
+    <p th:text="'Recorded at: ' + ${latestLog.timestamp}"></p>
 </div>
 
 <!-- Chart -->
-<!-- (Optional: Replace with dynamic chart data if needed) -->
-<div class="mt-4">
+<div class="mt-4" th:if="${history != null}">
+    <h4>Heart Rate History</h4>
     <canvas id="heartRateChart" width="800" height="300"></canvas>
 </div>
 
-<script>
-    const ctx = document.getElementById('heartRateChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['10:00', '10:05', '10:10'], // <-- Static for now
-            datasets: [{
-                label: 'Heart Rate (BPM)',
-                data: [72, 115, 88],              // <-- Static for now
-                borderColor: 'rgb(255, 99, 132)',
-                tension: 0.1
-            }]
-        }
-    });
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let history = [[${history}]];
+    if (history && history.length > 0) {
+        let labels = history.map(h => h.timestamp.substring(11,16)); // "HH:mm"
+        let bpmData = history.map(h => h.bpm);
+
+        const ctx = document.getElementById('heartRateChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Heart Rate (BPM)',
+                    data: bpmData,
+                    borderColor: 'rgb(75, 192, 192)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    tension: 0.2
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        suggestedMin: 50,
+                        suggestedMax: 160
+                    }
+                }
+            }
+        });
+    }
+    /*]]>*/
 </script>
 </body>
 </html>

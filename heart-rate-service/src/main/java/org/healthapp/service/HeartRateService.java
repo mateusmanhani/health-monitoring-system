@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,6 +29,10 @@ public class HeartRateService {
         heartRateRepository.save(log);
     }
 
+    public List<HeartRateLog> getHeartRateHistory(int patientId){
+        return heartRateRepository.findByPatientIdOrderByTimestampAsc(patientId);
+    }
+
 
     // Get last heartRateLog of a patient
     public HeartRateLog getLatestLogForPatient(int patientId){
@@ -43,6 +48,11 @@ public class HeartRateService {
     // Fetch patient
     public Optional<Patient> getPatient(int patientId){
         return patientRepository.findById(patientId);
+    }
+
+    // Fetch all patients
+    public List<Patient> getAllPatients(){
+        return patientRepository.findAll();
     }
 
 }

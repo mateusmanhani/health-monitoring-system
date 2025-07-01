@@ -1,24 +1,24 @@
 package org.healthapp.service;
 
+import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
 import org.healthapp.entity.HeartRateLog;
 import org.healthapp.entity.Patient;
-import org.healthapp.heartrate.HeartRateRequest;
-import org.healthapp.heartrate.HeartRateResponse;
-import org.healthapp.heartrate.HeartRateServiceGrpc;
+import org.healthapp.heartrate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
 @Service
-public class HeartRateGrpcService extends HeartRateServiceGrpc.HeartRateServiceImplBase {
+public class HeartRateGrpcController extends HeartRateServiceGrpc.HeartRateServiceImplBase {
     @Autowired
     private final HeartRateService heartRateService;
 
-    public HeartRateGrpcService(HeartRateService heartRateService) {
+    public HeartRateGrpcController(HeartRateService heartRateService) {
         this.heartRateService = heartRateService;
     }
 
@@ -63,9 +63,43 @@ public class HeartRateGrpcService extends HeartRateServiceGrpc.HeartRateServiceI
         }
     }
 
+    @Override
+    public void getHeartRateHistory (HeartRateRequest request, StreamObserver<HeartRateLogResponse> responseObserver){
+        List<HeartRateLog> logs = heartRateService.getHeartRateHistory(request.getPatientId());
+
+        for (HeartRateLog log : logs){
+            HeartRateLogResponse response = HeartRateLogResponse.newBuilder()
+                    .setBpm(log.getBpm())
+                    .setTimestamp(log.getTimestamp().toString())
+                    .build();
+            responseObserver.onNext(response);
+        }
+
+        responseObserver.onCompleted();
+    }
+
     private String getStatus(int bpm){
         if (bpm < 60) return "LOW";
         if (bpm > 100) return "HIGH";
         return "OK";
     }
+
+    @Override
+    public void getAllPatients(Empty request, StreamObserver<PatientResponse> responseObserver){
+        List<Patient> patients = heartRateService.getAllPatients();
+
+        // for each patient on the patient list build a PatientResponse object representing the proto message
+        for (Patient patient : patients){
+            PatientResponse response = PatientResponse.newBuilder()
+                    .setPatientId(patient.getPatientId())
+                    .setName(patient.getName())
+                    .setSurname(patient.getSurname())
+                    .build();
+            responseObserver.onNext(response);
+        }
+
+        responseObserver.onCompleted();
+    }
+
+
 }
