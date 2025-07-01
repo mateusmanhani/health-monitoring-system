@@ -15,7 +15,7 @@ service HeartRateService{
 
 // The request passed in order to get a response defined bellow
 message HeartRateRequest{
-  google.protobuf.Int32Value patient_id = 1; // Unique patient identifier
+  int32 patient_id = 1; // Unique patient identifier
 }
 
 // The response to return the bpm and the time stamp

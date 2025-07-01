@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class HeartRateService {
@@ -37,6 +38,11 @@ public class HeartRateService {
         if (!patientRepository.existsById(id)){
             patientRepository.save(new Patient(name, surname, age));
         }
+    }
+
+    // Fetch patient
+    public Optional<Patient> getPatient(int patientId){
+        return patientRepository.findById(patientId);
     }
 
 }
