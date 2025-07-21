@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 
+@Entity
 public class StepCountLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +23,9 @@ public class StepCountLog {
         this.steps = steps;
         this.timestamp = timestamp;
         this.patient = patient;
+    }
+
+    public StepCountLog() {
     }
 
     public int getId() {
