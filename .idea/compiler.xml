@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="heart-rate-service" />
         <module name="step-count-id" />
+        <module name="proto-shared" />
         <module name="gui-client" />
       </profile>
     </annotationProcessing>

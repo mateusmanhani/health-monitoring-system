@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_package = "org.healthapp.stepcount"; // tells protoc where to generate
+option java_multiple_files = true;
+
+package stepcount;
+
+service StepCountService {
+  rpc LogSteps (StepCountRequest) returns (StepCountResponse);
+  rpc GetSteps (StepCountRequest) returns (StepCountResponse);
+  rpc StreamSteps (StepCountRequest) returns (stream StepCountLogResponse);
+}
+
+message StepCountRequest {
+  int32 patient_id = 1;
+}
+message StepCountResponse {
+  int32 steps = 1;
+  string timestamp = 2;
+}
+message StepCountLogResponse {
+  int32 patient_id = 1;
+  int32 steps = 2;
+  string timestamp = 3;
+}

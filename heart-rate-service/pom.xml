@@ -77,6 +77,12 @@
             <version>${tomcat.annotations.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.healthapp</groupId>
+            <artifactId>proto-shared</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

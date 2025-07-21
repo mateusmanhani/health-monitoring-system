@@ -11,9 +11,9 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>proto-shared</module>
         <module>heart-rate-service</module>
         <module>step-count-service</module>
         <module>gui-client</module>
-        <!-- add more modules here -->
     </modules>
 </project>
