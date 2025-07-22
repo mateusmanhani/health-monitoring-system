@@ -17,7 +17,8 @@ public class StepCountLogService {
     @Autowired
     StepCountRepository stepCountRepository;
 
-    @Autowired PatientRepository patientRepository;
+    @Autowired
+    PatientRepository patientRepository;
 
     public void saveStepCount(int patientId, int stepCount) {
         // Try and fetch the patient with id passed or else thrown an exception

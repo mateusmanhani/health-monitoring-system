@@ -1,0 +1,2 @@
+org\healthapp\entity\Patient.class
+org\healthapp\repository\PatientRepository.class

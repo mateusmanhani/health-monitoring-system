@@ -9,7 +9,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * </pre>
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.64.0)",
+    value = "by gRPC proto compiler (version 1.72.0)",
     comments = "Source: heart_rate.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class HeartRateServiceGrpc {
@@ -158,6 +158,21 @@ public final class HeartRateServiceGrpc {
   }
 
   /**
+   * Creates a new blocking-style stub that supports all types of calls on the service
+   */
+  public static HeartRateServiceBlockingV2Stub newBlockingV2Stub(
+      io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<HeartRateServiceBlockingV2Stub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<HeartRateServiceBlockingV2Stub>() {
+        @java.lang.Override
+        public HeartRateServiceBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new HeartRateServiceBlockingV2Stub(channel, callOptions);
+        }
+      };
+    return HeartRateServiceBlockingV2Stub.newStub(factory, channel);
+  }
+
+  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static HeartRateServiceBlockingStub newBlockingStub(
@@ -294,6 +309,61 @@ public final class HeartRateServiceGrpc {
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service HeartRateService.
+   * <pre>
+   * A service to handle requests and return the response ( heart rate of requested patient id)
+   * And also a method to stream the current heart rate continuously
+   * </pre>
+   */
+  public static final class HeartRateServiceBlockingV2Stub
+      extends io.grpc.stub.AbstractBlockingStub<HeartRateServiceBlockingV2Stub> {
+    private HeartRateServiceBlockingV2Stub(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected HeartRateServiceBlockingV2Stub build(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      return new HeartRateServiceBlockingV2Stub(channel, callOptions);
+    }
+
+    /**
+     */
+    public org.healthapp.heartrate.HeartRateResponse getCurrentHeartRate(org.healthapp.heartrate.HeartRateRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetCurrentHeartRateMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, org.healthapp.heartrate.HeartRateResponse>
+        streamHeartRate(org.healthapp.heartrate.HeartRateRequest request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getStreamHeartRateMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, org.healthapp.heartrate.PatientResponse>
+        getAllPatients(com.google.protobuf.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getGetAllPatientsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, org.healthapp.heartrate.HeartRateLogResponse>
+        getHeartRateHistory(org.healthapp.heartrate.HeartRateRequest request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getGetHeartRateHistoryMethod(), getCallOptions(), request);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do limited synchronous rpc calls to service HeartRateService.
    * <pre>
    * A service to handle requests and return the response ( heart rate of requested patient id)
    * And also a method to stream the current heart rate continuously

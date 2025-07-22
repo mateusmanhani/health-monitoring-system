@@ -1,3 +1,11 @@
+
+
+-- Insert mock patients for this service's database (must be first!)
+INSERT INTO patient (patient_id, name, surname, age) VALUES
+  (1, 'Alice','Johnson', 65),
+  (2, 'Bob','Smith',54),
+  (3, 'Clara', 'Evans',76);
+
 -- Step Count Logs for Alice (Patient ID 1)
 INSERT INTO step_count_log (patient_id, steps, timestamp) VALUES
 -- Day 1 (2025-06-20)

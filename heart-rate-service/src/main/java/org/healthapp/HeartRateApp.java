@@ -4,12 +4,12 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.healthapp.service.HeartRateGrpcController;
 import org.healthapp.service.HeartRateService;
+import org.healthapp.heartrate.HeartRateServiceGrpc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.IOException;
-
 @SpringBootApplication
 public class HeartRateApp {
     public static void main(String[] args) throws InterruptedException, IOException {

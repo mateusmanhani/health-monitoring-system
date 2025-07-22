@@ -5,7 +5,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.64.0)",
+    value = "by gRPC proto compiler (version 1.72.0)",
     comments = "Source: step_count.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class StepCountServiceGrpc {
@@ -123,6 +123,21 @@ public final class StepCountServiceGrpc {
   }
 
   /**
+   * Creates a new blocking-style stub that supports all types of calls on the service
+   */
+  public static StepCountServiceBlockingV2Stub newBlockingV2Stub(
+      io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<StepCountServiceBlockingV2Stub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<StepCountServiceBlockingV2Stub>() {
+        @java.lang.Override
+        public StepCountServiceBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new StepCountServiceBlockingV2Stub(channel, callOptions);
+        }
+      };
+    return StepCountServiceBlockingV2Stub.newStub(factory, channel);
+  }
+
+  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static StepCountServiceBlockingStub newBlockingStub(
@@ -232,6 +247,46 @@ public final class StepCountServiceGrpc {
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service StepCountService.
+   */
+  public static final class StepCountServiceBlockingV2Stub
+      extends io.grpc.stub.AbstractBlockingStub<StepCountServiceBlockingV2Stub> {
+    private StepCountServiceBlockingV2Stub(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected StepCountServiceBlockingV2Stub build(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      return new StepCountServiceBlockingV2Stub(channel, callOptions);
+    }
+
+    /**
+     */
+    public org.healthapp.stepcount.StepCountResponse logSteps(org.healthapp.stepcount.StepCountRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getLogStepsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public org.healthapp.stepcount.StepCountResponse getSteps(org.healthapp.stepcount.StepCountRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetStepsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, org.healthapp.stepcount.StepCountLogResponse>
+        streamSteps(org.healthapp.stepcount.StepCountRequest request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getStreamStepsMethod(), getCallOptions(), request);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do limited synchronous rpc calls to service StepCountService.
    */
   public static final class StepCountServiceBlockingStub
       extends io.grpc.stub.AbstractBlockingStub<StepCountServiceBlockingStub> {

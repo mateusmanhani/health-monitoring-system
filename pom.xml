@@ -15,5 +15,6 @@
         <module>heart-rate-service</module>
         <module>step-count-service</module>
         <module>gui-client</module>
+        <module>common-data</module>
     </modules>
 </project>

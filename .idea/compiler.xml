@@ -8,10 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="heart-rate-service" />
         <module name="step-count-id" />
+        <module name="common-data" />
         <module name="proto-shared" />
         <module name="gui-client" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="patient-service" target="23" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

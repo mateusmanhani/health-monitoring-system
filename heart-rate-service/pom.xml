@@ -11,7 +11,7 @@
         <groupId>org.healthapp</groupId>
         <artifactId>health-monitoring-system</artifactId>
         <version>1.0.0</version>
-        <relativePath>../pom.xml</relativePath> <!-- points to parent -->
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <properties>
@@ -24,37 +24,28 @@
         <jackson.version>2.18.1</jackson.version>
         <tomcat.annotations.version>6.0.53</tomcat.annotations.version>
         <os.maven.plugin.version>1.7.1</os.maven.plugin.version>
-        <protobuf.maven.plugin.version>0.6.1</protobuf.maven.plugin.version>
         <junit.version>5.11.3</junit.version>
         <surefire.version>3.5.2</surefire.version>
-    </properties>
+        <spring-boot.version>3.5.3</spring-boot.version> </properties>
 
     <dependencies>
 
-        <!-- Spring dependencies -->
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-            <version>3.5.3</version>
-        </dependency>
+            <version>${spring-boot.version}</version> </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>3.5.3</version>
-        </dependency>
+            <version>${spring-boot.version}</version> </dependency>
 
-        <!--  H2 Database for mock data  -->
-        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>2.3.232</version>
         </dependency>
 
-        <!-- grpc / proto related dependencies -->
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty-shaded</artifactId>
@@ -70,7 +61,6 @@
             <artifactId>grpc-stub</artifactId>
             <version>${grpc.version}</version>
         </dependency>
-        <!-- necessary for Java 9+ -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>annotations-api</artifactId>
@@ -82,6 +72,12 @@
             <groupId>org.healthapp</groupId>
             <artifactId>proto-shared</artifactId>
             <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.healthapp</groupId>
+            <artifactId>common-data</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -97,10 +93,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                </configuration>
+                <version>3.13.0</version> <configuration>
+                <source>21</source>
+                <target>21</target>
+            </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -108,28 +104,9 @@
                 <version>${surefire.version}</version>
             </plugin>
             <plugin>
-                <groupId>org.xolstice.maven.plugins</groupId>
-                <artifactId>protobuf-maven-plugin</artifactId>
-                <version>${protobuf.maven.plugin.version}</version>
-                <configuration>
-                    <!--suppress UnresolvedMavenProperty -->
-                    <protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}</protocArtifact>
-                    <pluginId>grpc-java</pluginId>
-                    <!--suppress UnresolvedMavenProperty -->
-                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
-                    <protoSourceRoot>
-                        ${basedir}/src/main/proto/
-                    </protoSourceRoot>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>compile-custom</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version> </plugin>
         </plugins>
     </build>
 </project>

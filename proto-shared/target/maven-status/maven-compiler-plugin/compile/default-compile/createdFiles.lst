@@ -1,3 +1,4 @@
+org\healthapp\stepcount\StepCountServiceGrpc$4.class
 org\healthapp\heartrate\HeartRateServiceGrpc$3.class
 org\healthapp\heartrate\HeartRateRequest$Builder.class
 org\healthapp\heartrate\HeartRateLogResponse$Builder.class
@@ -11,6 +12,7 @@ org\healthapp\stepcount\StepCountLogResponseOrBuilder.class
 org\healthapp\heartrate\HeartRateResponse$1.class
 org\healthapp\stepcount\StepCountResponse.class
 org\healthapp\heartrate\HeartRateRequest$1.class
+org\healthapp\heartrate\HeartRateServiceGrpc$HeartRateServiceBlockingV2Stub.class
 org\healthapp\stepcount\StepCountRequest$Builder.class
 org\healthapp\heartrate\HeartRateServiceGrpc$2.class
 org\healthapp\stepcount\StepCountRequestOrBuilder.class
@@ -35,8 +37,10 @@ org\healthapp\heartrate\HeartRateResponseOrBuilder.class
 org\healthapp\heartrate\PatientResponse$Builder.class
 org\healthapp\stepcount\StepCountServiceGrpc$AsyncService.class
 org\healthapp\heartrate\HeartRateLogResponse$1.class
+org\healthapp\heartrate\HeartRateServiceGrpc$4.class
 org\healthapp\heartrate\HeartRateServiceGrpc$HeartRateServiceBlockingStub.class
 org\healthapp\heartrate\HeartRateRequestOrBuilder.class
+org\healthapp\stepcount\StepCountServiceGrpc$StepCountServiceBlockingV2Stub.class
 org\healthapp\stepcount\StepCountLogResponse.class
 org\healthapp\stepcount\StepCountServiceGrpc$StepCountServiceBlockingStub.class
 org\healthapp\stepcount\StepCountServiceGrpc$StepCountServiceFileDescriptorSupplier.class
