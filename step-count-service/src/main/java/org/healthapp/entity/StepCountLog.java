@@ -1,28 +1,18 @@
 package org.healthapp.entity;
 
-import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
-import java.sql.Timestamp;
-
-@Entity
 public class StepCountLog {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private int steps;
+    private LocalDateTime timestamp;
+    private int patientId;
 
-    private Timestamp timestamp;
-
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
-
-    public StepCountLog(int id, int steps, Timestamp timestamp, Patient patient) {
+    public StepCountLog(int id, int steps, LocalDateTime timestamp, int patientId) {
         this.id = id;
         this.steps = steps;
         this.timestamp = timestamp;
-        this.patient = patient;
+        this.patientId = patientId;
     }
 
     public StepCountLog() {
@@ -31,32 +21,25 @@ public class StepCountLog {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public int getSteps() {
         return steps;
     }
-
     public void setSteps(int steps) {
         this.steps = steps;
     }
-
-    public Timestamp getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
-
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
-
-    public Patient getPatient() {
-        return patient;
+    public int getPatientId() {
+        return patientId;
     }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
     }
 }

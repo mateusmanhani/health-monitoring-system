@@ -1,15 +1,23 @@
 package org.healthapp.repository;
 
 import org.healthapp.entity.StepCountLog;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Repository
-public interface StepCountRepository extends JpaRepository<StepCountLog, Integer > {
+public class StepCountRepository {
 
-    List<StepCountLog> findByPatientPatientIdOrderByTimestampAsc(int patientId);
+    private List<StepCountLog> stepCountLogs = new ArrayList<>();
 
-    StepCountLog findTopByPatientPatientIdOrderByTimestampDesc(int patientId);
+    public List<StepCountLog> findByPatientPatientIdOrderByTimestampAsc(int patientId) {
+        // Implement in-memory retrieval and sorting logic here
+        return stepCountLogs;
+    }
+
+    public StepCountLog findTopByPatientPatientIdOrderByTimestampDesc(int patientId) {
+        // Implement in-memory retrieval logic here
+        return stepCountLogs.isEmpty() ? null : stepCountLogs.get(stepCountLogs.size() - 1);
+    }
+
+    // Add methods to manipulate in-memory data (e.g., add, remove, clear) as needed
 }

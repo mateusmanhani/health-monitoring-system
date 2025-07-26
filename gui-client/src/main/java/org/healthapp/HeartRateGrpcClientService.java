@@ -1,9 +1,8 @@
 package org.healthapp;
 
 import com.google.protobuf.Empty;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
+import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.healthapp.heartrate.*;
 import org.springframework.stereotype.Service;
 
@@ -15,20 +14,12 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class HeartRateGrpcClientService {
 
-    private final HeartRateServiceGrpc.HeartRateServiceBlockingStub blockingStub;
+    @GrpcClient("heartRateService")
+    private HeartRateServiceGrpc.HeartRateServiceBlockingStub blockingStub;
 
-    private final HeartRateServiceGrpc.HeartRateServiceStub asyncStub;
+    @GrpcClient("heartRateService")
+    private HeartRateServiceGrpc.HeartRateServiceStub asyncStub;
 
-    private final ManagedChannel channel;
-
-    public HeartRateGrpcClientService() {
-        this.channel = ManagedChannelBuilder
-                .forAddress("localhost", 50051)
-                .usePlaintext()
-                .build();
-        this.blockingStub = HeartRateServiceGrpc.newBlockingStub(channel);
-        this.asyncStub = HeartRateServiceGrpc.newStub(channel);
-    }
 
     // For Single Response
     public HeartRateResponse getHeartRate(int patientId){
@@ -80,10 +71,6 @@ public class HeartRateGrpcClientService {
         asyncStub.streamHeartRate(request,responseObserver);
     }
 
-    public void shutdown() throws InterruptedException {
-        channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-    }
-
     public List<PatientResponse> getAllPatients(){
 
         List<PatientResponse> patients = new ArrayList<>();
@@ -117,4 +104,3 @@ public class HeartRateGrpcClientService {
         return patients;
     }
 }
-

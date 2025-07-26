@@ -1,6 +1,6 @@
 package org.healthapp;
 
-import io.grpc.ManagedChannel;
+import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;
 
 import org.healthapp.stepcount.StepCountServiceGrpc;
@@ -15,11 +15,10 @@ import java.util.List;
 
 @Service
 public class StepCountGrpcClientService {
-    private final StepCountServiceGrpc.StepCountServiceBlockingStub blockingStub;
 
-    public StepCountGrpcClientService(ManagedChannel channel) {
-        this.blockingStub = StepCountServiceGrpc.newBlockingStub(channel);
-    }
+    @GrpcClient("stepCountService")
+    private StepCountServiceGrpc.StepCountServiceBlockingStub blockingStub;
+
 
     public StepCountResponse getLatestStepCount(int patientId) {
         StepCountRequest request = StepCountRequest.newBuilder()
