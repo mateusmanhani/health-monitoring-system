@@ -16,6 +16,7 @@
         <module>step-count-service</module>
         <module>gui-client</module>
         <module>common-data</module>
+        <module>fall-detection-service</module>
     </modules>
 
     <dependencyManagement>
