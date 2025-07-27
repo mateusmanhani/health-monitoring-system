@@ -17,6 +17,7 @@ message StepCountRequest {
 message StepCountResponse {
   int32 steps = 1;
   string timestamp = 2;
+  string patient_name = 3;
 }
 message StepCountLogResponse {
   int32 patient_id = 1;

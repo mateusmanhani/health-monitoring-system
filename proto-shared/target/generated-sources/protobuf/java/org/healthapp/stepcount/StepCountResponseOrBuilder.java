@@ -25,4 +25,16 @@ public interface StepCountResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getTimestampBytes();
+
+  /**
+   * <code>string patient_name = 3;</code>
+   * @return The patientName.
+   */
+  java.lang.String getPatientName();
+  /**
+   * <code>string patient_name = 3;</code>
+   * @return The bytes for patientName.
+   */
+  com.google.protobuf.ByteString
+      getPatientNameBytes();
 }

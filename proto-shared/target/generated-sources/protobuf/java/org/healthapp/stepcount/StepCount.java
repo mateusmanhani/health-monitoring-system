@@ -40,18 +40,18 @@ public final class StepCount {
   static {
     java.lang.String[] descriptorData = {
       "\n\020step_count.proto\022\tstepcount\"&\n\020StepCou" +
-      "ntRequest\022\022\n\npatient_id\030\001 \001(\005\"5\n\021StepCou" +
+      "ntRequest\022\022\n\npatient_id\030\001 \001(\005\"K\n\021StepCou" +
       "ntResponse\022\r\n\005steps\030\001 \001(\005\022\021\n\ttimestamp\030\002" +
-      " \001(\t\"L\n\024StepCountLogResponse\022\022\n\npatient_" +
-      "id\030\001 \001(\005\022\r\n\005steps\030\002 \001(\005\022\021\n\ttimestamp\030\003 \001" +
-      "(\t2\357\001\n\020StepCountService\022E\n\010LogSteps\022\033.st" +
-      "epcount.StepCountRequest\032\034.stepcount.Ste" +
-      "pCountResponse\022E\n\010GetSteps\022\033.stepcount.S" +
-      "tepCountRequest\032\034.stepcount.StepCountRes" +
-      "ponse\022M\n\013StreamSteps\022\033.stepcount.StepCou" +
-      "ntRequest\032\037.stepcount.StepCountLogRespon" +
-      "se0\001B\033\n\027org.healthapp.stepcountP\001b\006proto" +
-      "3"
+      " \001(\t\022\024\n\014patient_name\030\003 \001(\t\"L\n\024StepCountL" +
+      "ogResponse\022\022\n\npatient_id\030\001 \001(\005\022\r\n\005steps\030" +
+      "\002 \001(\005\022\021\n\ttimestamp\030\003 \001(\t2\357\001\n\020StepCountSe" +
+      "rvice\022E\n\010LogSteps\022\033.stepcount.StepCountR" +
+      "equest\032\034.stepcount.StepCountResponse\022E\n\010" +
+      "GetSteps\022\033.stepcount.StepCountRequest\032\034." +
+      "stepcount.StepCountResponse\022M\n\013StreamSte" +
+      "ps\022\033.stepcount.StepCountRequest\032\037.stepco" +
+      "unt.StepCountLogResponse0\001B\033\n\027org.health" +
+      "app.stepcountP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -68,7 +68,7 @@ public final class StepCount {
     internal_static_stepcount_StepCountResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_stepcount_StepCountResponse_descriptor,
-        new java.lang.String[] { "Steps", "Timestamp", });
+        new java.lang.String[] { "Steps", "Timestamp", "PatientName", });
     internal_static_stepcount_StepCountLogResponse_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_stepcount_StepCountLogResponse_fieldAccessorTable = new

@@ -6,9 +6,15 @@ import java.util.*;
 
 public class InMemoryStepCountRepository {
     private final Map<Integer, List<StepCountLog>> logsByPatient = new HashMap<>();
+    private final Map<Integer, String> patientNames = new HashMap<>();
     private int logId = 1;
 
     public InMemoryStepCountRepository() {
+        // Add mock patients (same as heart-rate)
+        patientNames.put(1, "Alice Johnson");
+        patientNames.put(2, "Bob Smith");
+        patientNames.put(3, "Clara Evans");
+
         // Mock data for 3 patients
         addLog(1, 1000, LocalDateTime.parse("2025-06-26T10:00:00"));
         addLog(1, 1200, LocalDateTime.parse("2025-06-26T12:00:00"));
@@ -35,5 +41,8 @@ public class InMemoryStepCountRepository {
         List<StepCountLog> logs = getLogsForPatient(patientId);
         return logs.isEmpty() ? null : logs.get(logs.size() - 1);
     }
-}
 
+    public String getPatientName(int patientId) {
+        return patientNames.getOrDefault(patientId, "Unknown");
+    }
+}
