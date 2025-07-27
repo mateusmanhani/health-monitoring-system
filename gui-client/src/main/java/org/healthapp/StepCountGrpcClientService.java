@@ -47,4 +47,18 @@ public class StepCountGrpcClientService {
         iterator.forEachRemaining(logs::add);
         return logs;
     }
+
+    // Add getAllPatients method for use in MVC controller
+    public List<org.healthapp.heartrate.PatientResponse> getAllPatients() {
+        // Reuse HeartRateGrpcClientService for patient list, assuming same patients for both services
+        HeartRateGrpcClientService heartRateService = new HeartRateGrpcClientService();
+        return heartRateService.getAllPatients();
+    }
+
+    // Add getLatestLog for MVC controller
+    public StepCountLogResponse getLatestLog(int patientId) {
+        List<StepCountLogResponse> logs = getStepHistory(patientId);
+        if (logs.isEmpty()) return null;
+        return logs.get(logs.size() - 1);
+    }
 }

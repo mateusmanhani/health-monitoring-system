@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Health Monitor</title>
+    <title>Fall Detection Monitor</title>
 </head>
 <body>
-<h1>Patient Heart Rate Monitor</h1>
+<h1>Patient Fall Detection Monitor</h1>
 
 <!-- Patient Selection -->
 <div>
-    <form action="/heartrate" method="get">
+    <form action="/falldetection" method="get">
         <select name="patientId" required>
             <option value="">-- Select Patient --</option>
             <option th:each="patient : ${patients}"
@@ -17,28 +17,28 @@
                     th:selected="${patient.patientId == param.patientId}">
             </option>
         </select>
-        <button type="submit">Get Current Rate</button>
+        <button type="submit">Get Fall Events</button>
     </form>
 </div>
 
 <!-- Display Results -->
 <div th:if="${latestLog != null}">
-    <p>BPM: <span th:text="${latestLog.bpm}"></span></p>
-    <p>Status: <span th:text="${latestLog.bpm > 100 ? 'HIGH' : (latestLog.bpm < 60 ? 'LOW' : 'NORMAL')}"></span></p>
+    <p>Fall Detected: <span th:text="${latestLog.fallDetected ? 'Yes' : 'No'}"></span></p>
     <p>Recorded at: <span th:text="${latestLog.timestamp}"></span></p>
 </div>
 
 <!-- History Table -->
 <div th:if="${history != null}">
-    <h4>Heart Rate History</h4>
+    <h4>Fall Detection History</h4>
     <table border="1">
-        <tr><th>Time</th><th>BPM</th></tr>
+        <tr><th>Time</th><th>Fall Detected</th></tr>
         <tr th:each="h : ${history}">
             <td th:text="${h.timestamp}"></td>
-            <td th:text="${h.bpm}"></td>
+            <td th:text="${h.fallDetected ? 'Yes' : 'No'}"></td>
         </tr>
     </table>
 </div>
 
 </body>
 </html>
+

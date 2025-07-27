@@ -83,36 +83,37 @@ public class HeartRateGrpcClientService {
         asyncStub.streamHeartRate(request,responseObserver);
     }
 
+    // Get all patients (already present)
     public List<PatientResponse> getAllPatients(){
-
         List<PatientResponse> patients = new ArrayList<>();
-
         CountDownLatch latch = new CountDownLatch(1);
-
         asyncStub.getAllPatients(Empty.newBuilder().build(), new StreamObserver<>() {
             @Override
             public void onNext(PatientResponse response) {
                 patients.add(response);
             }
-
             @Override
             public void onError(Throwable throwable) {
                 latch.countDown();
             }
-
             @Override
             public void onCompleted() {
                 latch.countDown();
             }
         });
-
         try{
             latch.await(5, TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
+        } catch (InterruptedException e){
             e.printStackTrace();
             e.getMessage();
         }
-
         return patients;
+    }
+
+    // Get latest log for a patient
+    public HeartRateLogResponse getLatestLog(int patientId) {
+        List<HeartRateLogResponse> history = getHeartRateHistory(patientId);
+        if (history.isEmpty()) return null;
+        return history.get(history.size() - 1);
     }
 }
