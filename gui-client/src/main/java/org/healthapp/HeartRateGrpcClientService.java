@@ -1,11 +1,13 @@
 package org.healthapp;
 
 import com.google.protobuf.Empty;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
-import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.healthapp.heartrate.*;
 import org.springframework.stereotype.Service;
 
+import javax.jmdns.ServiceInfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -13,16 +15,25 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class HeartRateGrpcClientService {
-
-    @GrpcClient("heartRateService")
     private HeartRateServiceGrpc.HeartRateServiceBlockingStub blockingStub;
-
-    @GrpcClient("heartRateService")
     private HeartRateServiceGrpc.HeartRateServiceStub asyncStub;
 
+    public HeartRateGrpcClientService() {
+        ServiceInfo info = JmDnsServiceDiscovery.discoverService("_grpc._tcp.local.", "HeartRateService");
+        if (info != null) {
+            String host = info.getHostAddresses()[0];
+            int port = info.getPort();
+            ManagedChannel channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
+            blockingStub = HeartRateServiceGrpc.newBlockingStub(channel);
+            asyncStub = HeartRateServiceGrpc.newStub(channel);
+        } else {
+            System.err.println("HeartRateService not found via jmDNS!");
+        }
+    }
 
     // For Single Response
     public HeartRateResponse getHeartRate(int patientId){
+        if (blockingStub == null) return null;
         HeartRateRequest request = HeartRateRequest.newBuilder()
                 .setPatientId(patientId)
                 .build();
@@ -32,6 +43,7 @@ public class HeartRateGrpcClientService {
     // Get patient heart rate history
     public List<HeartRateLogResponse> getHeartRateHistory(int patientId){
         List<HeartRateLogResponse> history = new ArrayList<>();
+        if (asyncStub == null) return history;
         CountDownLatch latch = new CountDownLatch(1);
 
         HeartRateRequest request = HeartRateRequest.newBuilder().setPatientId(patientId).build();

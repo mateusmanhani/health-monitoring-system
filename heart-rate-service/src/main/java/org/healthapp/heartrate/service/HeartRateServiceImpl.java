@@ -17,7 +17,7 @@ public class HeartRateServiceImpl extends HeartRateServiceGrpc.HeartRateServiceI
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @Override
-    public void GetCurrentHeartRate(HeartRateRequest request, StreamObserver<HeartRateResponse> responseObserver) {
+    public void getCurrentHeartRate(HeartRateRequest request, StreamObserver<HeartRateResponse> responseObserver) {
         int patientId = request.getPatientId();
         InMemoryHeartRateRepository.HeartRateLog log = repository.getCurrentHeartRate(patientId);
         Patient patient = repository.getPatientById(patientId);
@@ -34,7 +34,7 @@ public class HeartRateServiceImpl extends HeartRateServiceGrpc.HeartRateServiceI
     }
 
     @Override
-    public void StreamHeartRate(HeartRateRequest request, StreamObserver<HeartRateResponse> responseObserver) {
+    public void streamHeartRate(HeartRateRequest request, StreamObserver<HeartRateResponse> responseObserver) {
         int patientId = request.getPatientId();
         for (InMemoryHeartRateRepository.HeartRateLog log : repository.getHeartRateLogs(patientId)) {
             Patient patient = repository.getPatientById(patientId);
@@ -50,7 +50,7 @@ public class HeartRateServiceImpl extends HeartRateServiceGrpc.HeartRateServiceI
     }
 
     @Override
-    public void GetAllPatients(Empty request, StreamObserver<PatientResponse> responseObserver) {
+    public void getAllPatients(Empty request, StreamObserver<PatientResponse> responseObserver) {
         for (Patient patient : repository.getAllPatients()) {
             PatientResponse response = PatientResponse.newBuilder()
                     .setPatientId(patient.getPatientId())
@@ -63,7 +63,7 @@ public class HeartRateServiceImpl extends HeartRateServiceGrpc.HeartRateServiceI
     }
 
     @Override
-    public void GetHeartRateHistory(HeartRateRequest request, StreamObserver<HeartRateLogResponse> responseObserver) {
+    public void getHeartRateHistory(HeartRateRequest request, StreamObserver<HeartRateLogResponse> responseObserver) {
         int patientId = request.getPatientId();
         for (InMemoryHeartRateRepository.HeartRateLog log : repository.getHeartRateLogs(patientId)) {
             HeartRateLogResponse response = HeartRateLogResponse.newBuilder()
@@ -81,4 +81,3 @@ public class HeartRateServiceImpl extends HeartRateServiceGrpc.HeartRateServiceI
         return "OK";
     }
 }
-
