@@ -2,9 +2,11 @@ package org.healthapp;
 
 import org.healthapp.HeartRateGrpcClientService;
 import org.healthapp.StepCountGrpcClientService;
+import org.healthapp.FallDetectionGrpcClientService;
 import org.healthapp.heartrate.HeartRateLogResponse;
 import org.healthapp.heartrate.PatientResponse;
 import org.healthapp.stepcount.StepCountLogResponse;
+import org.healthapp.dto.FallDetectionDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +17,12 @@ import java.util.List;
 public class HealthMonitoringViewController {
     private final HeartRateGrpcClientService heartRateService;
     private final StepCountGrpcClientService stepCountService;
+    private final FallDetectionGrpcClientService fallDetectionService;
 
-    public HealthMonitoringViewController(HeartRateGrpcClientService heartRateService, StepCountGrpcClientService stepCountService) {
+    public HealthMonitoringViewController(HeartRateGrpcClientService heartRateService, StepCountGrpcClientService stepCountService, FallDetectionGrpcClientService fallDetectionService) {
         this.heartRateService = heartRateService;
         this.stepCountService = stepCountService;
+        this.fallDetectionService = fallDetectionService;
     }
 
     @GetMapping("/healthmonitoring")
@@ -34,8 +38,10 @@ public class HealthMonitoringViewController {
             model.addAttribute("heartRateHistory", heartRateHistory);
             model.addAttribute("latestStepCount", latestStepCount);
             model.addAttribute("stepCountHistory", stepCountHistory);
+            // Add fall detection alerts
+            List<FallDetectionDto> fallAlerts = fallDetectionService.getFallAlerts(patientId);
+            model.addAttribute("fallAlerts", fallAlerts);
         }
         return "healthmonitoring";
     }
 }
-

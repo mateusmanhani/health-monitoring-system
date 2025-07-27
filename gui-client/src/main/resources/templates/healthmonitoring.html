@@ -45,8 +45,17 @@
     </table>
 </div>
 
-<!-- You can add fall detection here later -->
+<!-- Fall Detection Alerts -->
+<div th:if="${fallAlerts != null && !fallAlerts.isEmpty()}">
+    <h2>Fall Detection Alerts</h2>
+    <table border="1">
+        <tr><th>Time</th><th>Message</th></tr>
+        <tr th:each="alert : ${fallAlerts}">
+            <td th:text="${alert.timestamp}"></td>
+            <td th:text="${alert.message}"></td>
+        </tr>
+    </table>
+</div>
 
 </body>
 </html>
-
