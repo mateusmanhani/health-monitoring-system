@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.healthapp.falldetection";
+option java_outer_classname = "FallDetectionProto";
+
+service FallDetectionService {
+  rpc MonitorFalls(stream FallDetectionRequest) returns (stream FallDetectionResponse);
+}
+
+message FallDetectionRequest {
+  int32 patient_id = 1;
+  double accelX = 2;
+  double accelY = 3;
+  double accelZ = 4;
+  string timestamp = 5;
+}
+
+message FallDetectionResponse {
+  string message = 1;
+  string timestamp = 2;
+}
+

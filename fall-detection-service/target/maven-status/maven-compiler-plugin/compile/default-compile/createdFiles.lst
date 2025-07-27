@@ -1,0 +1,5 @@
+org\healthapp\falldetection\repository\InMemoryFallDetectionRepository.class
+org\healthapp\falldetection\service\FallDetectionServiceImpl.class
+org\healthapp\falldetection\service\FallDetectionServiceImpl$1.class
+org\healthapp\falldetection\repository\InMemoryFallDetectionRepository$FallEvent.class
+org\healthapp\Main.class
