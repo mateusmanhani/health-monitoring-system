@@ -10,6 +10,7 @@
         <module name="step-count-id" />
         <module name="common-data" />
         <module name="proto-shared" />
+        <module name="fall-detection-service" />
         <module name="gui-client" />
       </profile>
     </annotationProcessing>

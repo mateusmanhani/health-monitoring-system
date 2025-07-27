@@ -4,8 +4,14 @@ option java_multiple_files = true;
 option java_package = "org.healthapp.falldetection";
 option java_outer_classname = "FallDetectionProto";
 
+import "google/protobuf/empty.proto";
+import "heart_rate.proto";
+
 service FallDetectionService {
   rpc MonitorFalls(stream FallDetectionRequest) returns (stream FallDetectionResponse);
+  rpc GetAllPatients(google.protobuf.Empty) returns (stream PatientResponse);
+  rpc GetFallEventHistory(FallDetectionRequest) returns (stream FallDetectionResponse);
+  rpc GetLatestFallEvent(FallDetectionRequest) returns (FallDetectionResponse);
 }
 
 message FallDetectionRequest {
@@ -20,4 +26,3 @@ message FallDetectionResponse {
   string message = 1;
   string timestamp = 2;
 }
-

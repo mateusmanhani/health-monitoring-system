@@ -46,6 +46,99 @@ public final class FallDetectionServiceGrpc {
     return getMonitorFallsMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+      org.healthapp.heartrate.PatientResponse> getGetAllPatientsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAllPatients",
+      requestType = com.google.protobuf.Empty.class,
+      responseType = org.healthapp.heartrate.PatientResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+      org.healthapp.heartrate.PatientResponse> getGetAllPatientsMethod() {
+    io.grpc.MethodDescriptor<com.google.protobuf.Empty, org.healthapp.heartrate.PatientResponse> getGetAllPatientsMethod;
+    if ((getGetAllPatientsMethod = FallDetectionServiceGrpc.getGetAllPatientsMethod) == null) {
+      synchronized (FallDetectionServiceGrpc.class) {
+        if ((getGetAllPatientsMethod = FallDetectionServiceGrpc.getGetAllPatientsMethod) == null) {
+          FallDetectionServiceGrpc.getGetAllPatientsMethod = getGetAllPatientsMethod =
+              io.grpc.MethodDescriptor.<com.google.protobuf.Empty, org.healthapp.heartrate.PatientResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAllPatients"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.healthapp.heartrate.PatientResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new FallDetectionServiceMethodDescriptorSupplier("GetAllPatients"))
+              .build();
+        }
+      }
+    }
+    return getGetAllPatientsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<org.healthapp.falldetection.FallDetectionRequest,
+      org.healthapp.falldetection.FallDetectionResponse> getGetFallEventHistoryMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetFallEventHistory",
+      requestType = org.healthapp.falldetection.FallDetectionRequest.class,
+      responseType = org.healthapp.falldetection.FallDetectionResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<org.healthapp.falldetection.FallDetectionRequest,
+      org.healthapp.falldetection.FallDetectionResponse> getGetFallEventHistoryMethod() {
+    io.grpc.MethodDescriptor<org.healthapp.falldetection.FallDetectionRequest, org.healthapp.falldetection.FallDetectionResponse> getGetFallEventHistoryMethod;
+    if ((getGetFallEventHistoryMethod = FallDetectionServiceGrpc.getGetFallEventHistoryMethod) == null) {
+      synchronized (FallDetectionServiceGrpc.class) {
+        if ((getGetFallEventHistoryMethod = FallDetectionServiceGrpc.getGetFallEventHistoryMethod) == null) {
+          FallDetectionServiceGrpc.getGetFallEventHistoryMethod = getGetFallEventHistoryMethod =
+              io.grpc.MethodDescriptor.<org.healthapp.falldetection.FallDetectionRequest, org.healthapp.falldetection.FallDetectionResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetFallEventHistory"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.healthapp.falldetection.FallDetectionRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.healthapp.falldetection.FallDetectionResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new FallDetectionServiceMethodDescriptorSupplier("GetFallEventHistory"))
+              .build();
+        }
+      }
+    }
+    return getGetFallEventHistoryMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<org.healthapp.falldetection.FallDetectionRequest,
+      org.healthapp.falldetection.FallDetectionResponse> getGetLatestFallEventMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetLatestFallEvent",
+      requestType = org.healthapp.falldetection.FallDetectionRequest.class,
+      responseType = org.healthapp.falldetection.FallDetectionResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<org.healthapp.falldetection.FallDetectionRequest,
+      org.healthapp.falldetection.FallDetectionResponse> getGetLatestFallEventMethod() {
+    io.grpc.MethodDescriptor<org.healthapp.falldetection.FallDetectionRequest, org.healthapp.falldetection.FallDetectionResponse> getGetLatestFallEventMethod;
+    if ((getGetLatestFallEventMethod = FallDetectionServiceGrpc.getGetLatestFallEventMethod) == null) {
+      synchronized (FallDetectionServiceGrpc.class) {
+        if ((getGetLatestFallEventMethod = FallDetectionServiceGrpc.getGetLatestFallEventMethod) == null) {
+          FallDetectionServiceGrpc.getGetLatestFallEventMethod = getGetLatestFallEventMethod =
+              io.grpc.MethodDescriptor.<org.healthapp.falldetection.FallDetectionRequest, org.healthapp.falldetection.FallDetectionResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetLatestFallEvent"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.healthapp.falldetection.FallDetectionRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.healthapp.falldetection.FallDetectionResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new FallDetectionServiceMethodDescriptorSupplier("GetLatestFallEvent"))
+              .build();
+        }
+      }
+    }
+    return getGetLatestFallEventMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -115,6 +208,27 @@ public final class FallDetectionServiceGrpc {
         io.grpc.stub.StreamObserver<org.healthapp.falldetection.FallDetectionResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getMonitorFallsMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void getAllPatients(com.google.protobuf.Empty request,
+        io.grpc.stub.StreamObserver<org.healthapp.heartrate.PatientResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAllPatientsMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getFallEventHistory(org.healthapp.falldetection.FallDetectionRequest request,
+        io.grpc.stub.StreamObserver<org.healthapp.falldetection.FallDetectionResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetFallEventHistoryMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getLatestFallEvent(org.healthapp.falldetection.FallDetectionRequest request,
+        io.grpc.stub.StreamObserver<org.healthapp.falldetection.FallDetectionResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetLatestFallEventMethod(), responseObserver);
+    }
   }
 
   /**
@@ -151,6 +265,30 @@ public final class FallDetectionServiceGrpc {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getMonitorFallsMethod(), getCallOptions()), responseObserver);
     }
+
+    /**
+     */
+    public void getAllPatients(com.google.protobuf.Empty request,
+        io.grpc.stub.StreamObserver<org.healthapp.heartrate.PatientResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getGetAllPatientsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getFallEventHistory(org.healthapp.falldetection.FallDetectionRequest request,
+        io.grpc.stub.StreamObserver<org.healthapp.falldetection.FallDetectionResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getGetFallEventHistoryMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getLatestFallEvent(org.healthapp.falldetection.FallDetectionRequest request,
+        io.grpc.stub.StreamObserver<org.healthapp.falldetection.FallDetectionResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetLatestFallEventMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -177,6 +315,31 @@ public final class FallDetectionServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingBidiStreamingCall(
           getChannel(), getMonitorFallsMethod(), getCallOptions());
     }
+
+    /**
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, org.healthapp.heartrate.PatientResponse>
+        getAllPatients(com.google.protobuf.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getGetAllPatientsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, org.healthapp.falldetection.FallDetectionResponse>
+        getFallEventHistory(org.healthapp.falldetection.FallDetectionRequest request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getGetFallEventHistoryMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public org.healthapp.falldetection.FallDetectionResponse getLatestFallEvent(org.healthapp.falldetection.FallDetectionRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetLatestFallEventMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -193,6 +356,29 @@ public final class FallDetectionServiceGrpc {
     protected FallDetectionServiceBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new FallDetectionServiceBlockingStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public java.util.Iterator<org.healthapp.heartrate.PatientResponse> getAllPatients(
+        com.google.protobuf.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getGetAllPatientsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<org.healthapp.falldetection.FallDetectionResponse> getFallEventHistory(
+        org.healthapp.falldetection.FallDetectionRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getGetFallEventHistoryMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public org.healthapp.falldetection.FallDetectionResponse getLatestFallEvent(org.healthapp.falldetection.FallDetectionRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetLatestFallEventMethod(), getCallOptions(), request);
     }
   }
 
@@ -211,9 +397,20 @@ public final class FallDetectionServiceGrpc {
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new FallDetectionServiceFutureStub(channel, callOptions);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<org.healthapp.falldetection.FallDetectionResponse> getLatestFallEvent(
+        org.healthapp.falldetection.FallDetectionRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetLatestFallEventMethod(), getCallOptions()), request);
+    }
   }
 
-  private static final int METHODID_MONITOR_FALLS = 0;
+  private static final int METHODID_GET_ALL_PATIENTS = 0;
+  private static final int METHODID_GET_FALL_EVENT_HISTORY = 1;
+  private static final int METHODID_GET_LATEST_FALL_EVENT = 2;
+  private static final int METHODID_MONITOR_FALLS = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -232,6 +429,18 @@ public final class FallDetectionServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_GET_ALL_PATIENTS:
+          serviceImpl.getAllPatients((com.google.protobuf.Empty) request,
+              (io.grpc.stub.StreamObserver<org.healthapp.heartrate.PatientResponse>) responseObserver);
+          break;
+        case METHODID_GET_FALL_EVENT_HISTORY:
+          serviceImpl.getFallEventHistory((org.healthapp.falldetection.FallDetectionRequest) request,
+              (io.grpc.stub.StreamObserver<org.healthapp.falldetection.FallDetectionResponse>) responseObserver);
+          break;
+        case METHODID_GET_LATEST_FALL_EVENT:
+          serviceImpl.getLatestFallEvent((org.healthapp.falldetection.FallDetectionRequest) request,
+              (io.grpc.stub.StreamObserver<org.healthapp.falldetection.FallDetectionResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -260,6 +469,27 @@ public final class FallDetectionServiceGrpc {
               org.healthapp.falldetection.FallDetectionRequest,
               org.healthapp.falldetection.FallDetectionResponse>(
                 service, METHODID_MONITOR_FALLS)))
+        .addMethod(
+          getGetAllPatientsMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              com.google.protobuf.Empty,
+              org.healthapp.heartrate.PatientResponse>(
+                service, METHODID_GET_ALL_PATIENTS)))
+        .addMethod(
+          getGetFallEventHistoryMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              org.healthapp.falldetection.FallDetectionRequest,
+              org.healthapp.falldetection.FallDetectionResponse>(
+                service, METHODID_GET_FALL_EVENT_HISTORY)))
+        .addMethod(
+          getGetLatestFallEventMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              org.healthapp.falldetection.FallDetectionRequest,
+              org.healthapp.falldetection.FallDetectionResponse>(
+                service, METHODID_GET_LATEST_FALL_EVENT)))
         .build();
   }
 
@@ -309,6 +539,9 @@ public final class FallDetectionServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new FallDetectionServiceFileDescriptorSupplier())
               .addMethod(getMonitorFallsMethod())
+              .addMethod(getGetAllPatientsMethod())
+              .addMethod(getGetFallEventHistoryMethod())
+              .addMethod(getGetLatestFallEventMethod())
               .build();
         }
       }

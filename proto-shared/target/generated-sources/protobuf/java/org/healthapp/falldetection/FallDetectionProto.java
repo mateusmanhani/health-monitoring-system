@@ -34,19 +34,27 @@ public final class FallDetectionProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024fall_detection.proto\"m\n\024FallDetectionR" +
-      "equest\022\022\n\npatient_id\030\001 \001(\005\022\016\n\006accelX\030\002 \001" +
-      "(\001\022\016\n\006accelY\030\003 \001(\001\022\016\n\006accelZ\030\004 \001(\001\022\021\n\tti" +
-      "mestamp\030\005 \001(\t\";\n\025FallDetectionResponse\022\017" +
-      "\n\007message\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\t2Y\n\024Fa" +
-      "llDetectionService\022A\n\014MonitorFalls\022\025.Fal" +
-      "lDetectionRequest\032\026.FallDetectionRespons" +
-      "e(\0010\001B3\n\033org.healthapp.falldetectionB\022Fa" +
-      "llDetectionProtoP\001b\006proto3"
+      "\n\024fall_detection.proto\032\033google/protobuf/" +
+      "empty.proto\032\020heart_rate.proto\"m\n\024FallDet" +
+      "ectionRequest\022\022\n\npatient_id\030\001 \001(\005\022\016\n\006acc" +
+      "elX\030\002 \001(\001\022\016\n\006accelY\030\003 \001(\001\022\016\n\006accelZ\030\004 \001(" +
+      "\001\022\021\n\ttimestamp\030\005 \001(\t\";\n\025FallDetectionRes" +
+      "ponse\022\017\n\007message\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(" +
+      "\t2\244\002\n\024FallDetectionService\022A\n\014MonitorFal" +
+      "ls\022\025.FallDetectionRequest\032\026.FallDetectio" +
+      "nResponse(\0010\001\022<\n\016GetAllPatients\022\026.google" +
+      ".protobuf.Empty\032\020.PatientResponse0\001\022F\n\023G" +
+      "etFallEventHistory\022\025.FallDetectionReques" +
+      "t\032\026.FallDetectionResponse0\001\022C\n\022GetLatest" +
+      "FallEvent\022\025.FallDetectionRequest\032\026.FallD" +
+      "etectionResponseB3\n\033org.healthapp.fallde" +
+      "tectionB\022FallDetectionProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.google.protobuf.EmptyProto.getDescriptor(),
+          org.healthapp.heartrate.HeartRateProto.getDescriptor(),
         });
     internal_static_FallDetectionRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -60,6 +68,8 @@ public final class FallDetectionProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FallDetectionResponse_descriptor,
         new java.lang.String[] { "Message", "Timestamp", });
+    com.google.protobuf.EmptyProto.getDescriptor();
+    org.healthapp.heartrate.HeartRateProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
